@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mujoco model="tai_object">
+  <compiler angle="degree" coordinate="local" inertiafromgeom="false" meshdir="meshes"/>
+  <option gravity="0 0 -9.81" integrator="implicitfast"/>
+  <default>
+    <geom friction="0.8 0.1 0.1" condim="3"/>
+  </default>
+  <asset>
+    <mesh name="visual_mesh" file="visual.obj" scale="1 1 1"/>
+    <mesh name="collision_mesh" file="collision.obj" scale="1 1 1"/>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512"/>
+    <material name="grid_mat" texture="grid" texrepeat="8 8" reflectance="0.1"/>
+  </asset>
+  <worldbody>
+    <geom name="floor" type="plane" size="2 2 0.05" pos="0 0 0" material="grid_mat"/>
+    <light name="main_light" directional="true" diffuse="0.8 0.8 0.8" specular="0.2 0.2 0.2" pos="0 0 2" dir="0 0 -1"/>
+    <camera name="track" mode="trackcom" pos="0.6 -0.6 0.35" xyaxes="0.7 0.7 0 -0.4 0.4 0.8"/>
+    <body name="tai_object_body" pos="0 0 0">
+      <freejoint name="root"/>
+      <inertial pos="0 0 0" mass="0.5" diaginertia="0.000217416021 0.000217416021 0.0003"/>
+      <geom name="visual" type="mesh" mesh="visual_mesh" contype="0" conaffinity="0" rgba="0.85 0.85 0.9 1"/>
+      <geom name="collision_mesh" type="mesh" mesh="collision_mesh" rgba="0.2 0.6 0.9 0.35" group="3"/>
+    </body>
+  </worldbody>
+</mujoco>

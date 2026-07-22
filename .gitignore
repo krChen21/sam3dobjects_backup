@@ -1,1 +1,15 @@
-__pycache__
+__pycache__/
+*.py[cod]
+.gradio/
+# 权重与模型
+checkpoints/
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.safetensors
+# 大产物 / 输出
+outputs/
+*.ply
+*.glb
+*.gif
